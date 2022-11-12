@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
+    <ProjectReference Include="..\WorkShop.Model\WorkShop.Model.csproj" />
+    <ProjectReference Include="..\WorkShop.Repository\WorkShop.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
