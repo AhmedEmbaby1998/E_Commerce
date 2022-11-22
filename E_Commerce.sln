@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkShop.Model", "WorkShop.Model\WorkShop.Model.csproj", "{3BADA62F-AC17-4759-B0A2-C748570C76C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkShop.Model", "WorkShop.Model\WorkShop.Model.csproj", "{3BADA62F-AC17-4759-B0A2-C748570C76C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkShop.Repository", "WorkShop.Repository\WorkShop.Repository.csproj", "{B7C7FC91-EB71-4F52-A01F-258867E2A6A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkShop.Repository", "WorkShop.Repository\WorkShop.Repository.csproj", "{B7C7FC91-EB71-4F52-A01F-258867E2A6A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkShop.BL", "WorkShop.BL\WorkShop.BL.csproj", "{45A1EB9E-A7DC-47E7-9BB9-4EB6FEB230DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkShop.BL", "WorkShop.BL\WorkShop.BL.csproj", "{45A1EB9E-A7DC-47E7-9BB9-4EB6FEB230DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{8A3CBFD9-FDFF-4D5C-8A3F-9F112F6A42FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{8A3CBFD9-FDFF-4D5C-8A3F-9F112F6A42FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOs", "DTOs\DTOs.csproj", "{491ACAA1-057A-45CD-BCF8-4E3ABF9B3066}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTOs", "DTOs\DTOs.csproj", "{491ACAA1-057A-45CD-BCF8-4E3ABF9B3066}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkShop.API", "WorkShop.API\WorkShop.API.csproj", "{1BCEC733-B57E-49FD-93C4-3645FE37F71D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkShop.API", "WorkShop.API\WorkShop.API.csproj", "{1BCEC733-B57E-49FD-93C4-3645FE37F71D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{60AD38C4-B405-466F-A6C8-7B1FC5455E9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3BADA62F-AC17-4759-B0A2-C748570C76C1} = {60AD38C4-B405-466F-A6C8-7B1FC5455E9E}
+		{B7C7FC91-EB71-4F52-A01F-258867E2A6A7} = {60AD38C4-B405-466F-A6C8-7B1FC5455E9E}
+		{45A1EB9E-A7DC-47E7-9BB9-4EB6FEB230DF} = {60AD38C4-B405-466F-A6C8-7B1FC5455E9E}
+		{8A3CBFD9-FDFF-4D5C-8A3F-9F112F6A42FF} = {60AD38C4-B405-466F-A6C8-7B1FC5455E9E}
+		{491ACAA1-057A-45CD-BCF8-4E3ABF9B3066} = {60AD38C4-B405-466F-A6C8-7B1FC5455E9E}
+		{1BCEC733-B57E-49FD-93C4-3645FE37F71D} = {60AD38C4-B405-466F-A6C8-7B1FC5455E9E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7C6C6A55-98A9-459D-ADCC-76BAFD58E914}

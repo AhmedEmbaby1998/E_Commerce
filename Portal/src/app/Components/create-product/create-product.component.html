@@ -1,0 +1,81 @@
+<form>
+<div>
+  <div class="submit-form">
+    <div>
+      <div class="form-group">
+        <label for="title">Name(En)</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          name="title"
+          [(ngModel)]="this.request.nameEn"
+        />
+        <div class="alert alert-danger" role="alert">
+          This is a danger alert—check it out!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Name(Ar)</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          name="title"
+          [(ngModel)]="this.request.nameAr"
+        />
+      </div>
+      <div>
+        <label>Choose Category</label>
+        <select matNativeControl required>
+          <mat-label>Category</mat-label>
+          <option [value]="item.id" *ngFor="let item of this.categories">{{item.nameEn}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="description">Description(En)</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          name="description"
+          [(ngModel)]="this.request.descriptionEn"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description(Ar)</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          name="description"
+          [(ngModel)]="this.request.descriptionAr"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="title">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="title"
+        required
+        name="title"
+        [(ngModel)]="this.request.price"
+      />
+    </div>
+
+    <section class="example-section" >
+      <h4>Select your toppings:</h4>
+      <p><mat-checkbox [checked]="this.request.isAvailable" (change)="changeAvailablity($event,true)"  [(ngModel)]="this.request.isAvailable">Available</mat-checkbox></p>
+      <p><mat-checkbox [checked]="!this.request.isAvailable" (change)="changeAvailablity($event,false)" [(ngModel)]="!this.request.isAvailable">Not Available</mat-checkbox></p>
+    </section>
+    <div>
+      <h4 *ngIf="isSubitted">Product was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="onSubmit()">Submit</button>
+    </div>
+  </div>
+</div>
+</form>
