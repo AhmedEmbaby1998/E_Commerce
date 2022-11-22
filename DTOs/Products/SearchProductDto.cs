@@ -9,11 +9,11 @@ namespace DTOs.Products
     public class SearchProductDto
     {
         public int Count { set; get; }
-        public IEnumerable<ProductDto> Products { get; set; }
+        public IEnumerable<ProductInputForSearch> Products { get; set; }
 
     }
 
-    public class ProductDto
+    public class ProductInputForSearch
     {
         public string NameEn { set; get; }
         public string NameAr { set; get; }

@@ -9,7 +9,7 @@ namespace DTOs.Products
 {
     public class ProductInput
     {
-        public int ProductID { get; set; }
+        public long productID { get; set; }
         [Required]
         public string NameEn { set; get; }
         [Required]

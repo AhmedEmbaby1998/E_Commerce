@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,10 @@ namespace WorkShop.Repository.Repos.ProductRepos
             _context.Products.Update(product);
         }
 
+        public async Task<Product?> GetProduct(long productId)
+        {
+            return await _context.Products.FindAsync(productId);
+        }
         public async Task<bool> ProductNameExistAsync(string productNameEn,string productNameAr)
         {
             return _context.Products.Any(a => a.NameEn == productNameEn || a.NameAr == productNameAr);

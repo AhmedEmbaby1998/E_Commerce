@@ -9,7 +9,7 @@ using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 namespace WorkShop.API.Controllers
 {
     [ApiController]
-    [Route("api/Controller")]
+    [Route("api/[Controller]")]
     public class ProductController : BaseController
     {
         private IProductBL productBL;
@@ -30,14 +30,37 @@ namespace WorkShop.API.Controllers
                     DescriptionEn = input.DescriptionEn,
                     CurrentPrice = input.Price,
                     NameAr = input.NameAr,
-                    HasAvailableStock = input.IsAvailable
+                    HasAvailableStock = input.IsAvailable,
                 });
 
                 return Ok();
             });
         }
 
-        [HttpPost("updateProduct")]
+        [HttpGet("GetAProduct/{productId}")]
+        public async Task<IActionResult> GetAProduct([FromRoute] long productId)
+        {
+            return await this.TryCatchAsync(async () =>
+            {
+                var res = await productBL.GetAProduct(productId);
+                if (res is null)
+                    throw new NullReferenceException();
+
+                return Ok(new ProductInput
+                {
+                    CategoryId=res.CategoryId,
+                    Price=res.CurrentPrice,
+                    DescriptionAr=res.DescriptionAr,
+                    DescriptionEn=res.DescriptionEn,
+                    IsAvailable=res.HasAvailableStock,
+                    NameAr=res.NameAr,
+                    NameEn=res.NameEn,
+                    productID=res.Id
+                });
+            });
+        }
+
+        [HttpPut("updateProduct")]
         public async Task<IActionResult> UpdateProduct([FromBody] ProductInput input)
         {
             return await this.TryCatchAsync(async () =>
@@ -50,7 +73,8 @@ namespace WorkShop.API.Controllers
                     DescriptionEn = input.DescriptionEn,
                     CurrentPrice = input.Price,
                     NameAr = input.NameAr,
-                    HasAvailableStock = input.IsAvailable
+                    HasAvailableStock = input.IsAvailable,
+                    Id = input.productID
                 });
 
                 return Ok();
@@ -71,7 +95,7 @@ namespace WorkShop.API.Controllers
         [HttpGet("Search")]
         public async Task<IActionResult> Search([FromBody] ProductSearchModelDto sm)
         {
-            return await this.TryCatchAsync(async () =>
+            return await this.TryCatchAsync((Func<Task<IActionResult>>)(async () =>
             {
                 (var data, var count) = await productBL.SearchProducts(new Repository.RepoDtos.ProductSearchModel
                 {
@@ -84,7 +108,7 @@ namespace WorkShop.API.Controllers
                 var returnVal = new SearchProductDto
                 {
                     Count = count,
-                    Products = data.Select(d => new ProductDto
+                    Products = data.Select(d => new ProductInputForSearch
                     {
                         CurrentPrice = d.CurrentPrice,
                         DescriptionAr = d.DescriptionAr,
@@ -94,8 +118,8 @@ namespace WorkShop.API.Controllers
                         NameEn = d.NameEn
                     })
             };
-                return Ok(returnVal);
-            });
+                return base.Ok(returnVal);
+            }));
             
         }
       

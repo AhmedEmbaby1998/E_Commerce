@@ -9,5 +9,6 @@ namespace WorkShop.BL.Products
         Task<Product> DeleteProduct(long Id);
         Task<(IEnumerable<Product>, int)> SearchProducts(ProductSearchModel sm);
         Task<Product> UpdateProduct(Product product);
+        Task<Product?> GetAProduct(long productId);
     }
 }

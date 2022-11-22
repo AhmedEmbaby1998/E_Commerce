@@ -22,14 +22,15 @@ namespace WorkShop.BL.Products
 
         public async Task<Product> AddProduct(Product product)
         {
-            var pr = await UOW.ProductRepo.FindProductAsync(product.Id);
-            if (pr is null)
-                throw new NullReferenceException();
-            product.Version++;
             UOW.ProductRepo.AddProduct(product);
             await UOW.CommitAsync();
 
             return product;
+        }
+
+        public async Task<Product?> GetAProduct(long productId)
+        {
+            return await UOW.ProductRepo.GetProduct(productId);
         }
         public async Task<Product> UpdateProduct(Product product)
         {
@@ -42,7 +43,13 @@ namespace WorkShop.BL.Products
                 throw new CustomException(ErrorCodeEnum.ProductNameIsAlreadyExisted);
             product.Version++;
 
-            UOW.ProductRepo.UpdateProduct(product);
+            pr.NameAr=product.NameEn;
+            pr.NameEn = product.NameAr;
+            pr.CurrentPrice = product.CurrentPrice;
+            pr.CategoryId=product.CategoryId;
+            pr.DescriptionAr = product.DescriptionAr;
+            pr.DescriptionEn = product.DescriptionEn;
+            pr.HasAvailableStock = product.HasAvailableStock;
             await UOW.CommitAsync();
 
             return product;

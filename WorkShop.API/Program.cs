@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using ServiceStack;
+using WorkShop.BL;
 using WorkShop.BL.Products;
 using WorkShop.Model.Models;
 using WorkShop.Repository;
@@ -6,9 +8,18 @@ using WorkShop.Repository;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+// Add services to the container.
+builder.Services.AddCors(options => options.AddPolicy(name: MyAllowSpecificOrigins, builder =>
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()));
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IProductBL, ProductBL>();
+builder.Services.AddScoped<ILookUpService, LookUpService>();
 builder.Services.AddScoped<UnitOfWork>();
 builder.Services.AddDbContext<WorkShopContext>(option =>
 {
@@ -32,5 +43,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
